@@ -19,7 +19,7 @@ public class FinancialResultRepository {
     }
 
     public MutableLiveData<List<FinancialResult>> getResults() {
-        setResults();
+//        setResults();
 
         MutableLiveData<List<FinancialResult>> data = new MutableLiveData<>();
         data.setValue(dataSet);
@@ -27,9 +27,9 @@ public class FinancialResultRepository {
     }
 
     // hardcoded data
-    private void setResults() {
-        dataSet.add(new FinancialResult(1, 1000));
-        dataSet.add(new FinancialResult(2, 1005));
-        dataSet.add(new FinancialResult(3, 1010));
-    }
+//    private void setResults() {
+//        dataSet.add(new FinancialResult(1, 1000));
+//        dataSet.add(new FinancialResult(2, 1005));
+//        dataSet.add(new FinancialResult(3, 1010));
+//    }
 }

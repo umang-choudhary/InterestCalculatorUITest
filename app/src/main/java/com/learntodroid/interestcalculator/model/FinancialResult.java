@@ -1,18 +1,19 @@
 package com.learntodroid.interestcalculator.model;
 
 public class FinancialResult {
-    private int period, result;
+    private String description;
+    private double result;
 
-    public FinancialResult(int period, int result) {
-        this.period = period;
+    public FinancialResult(String description, double result) {
+        this.description = description;
         this.result = result;
     }
 
-    public int getPeriod() {
-        return period;
+    public String getDescription() {
+        return description;
     }
 
-    public int getResult() {
+    public double getResult() {
         return result;
     }
 }

@@ -34,8 +34,8 @@ public class ResultsAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        ((ResultsViewHolder) viewHolder).period.setText("Period: " + results.get(i).getPeriod());
-        ((ResultsViewHolder) viewHolder).result.setText("Result: " + results.get(i).getResult());
+        ((ResultsViewHolder) viewHolder).description.setText(results.get(i).getDescription());
+        ((ResultsViewHolder) viewHolder).result.setText(String.valueOf(results.get(i).getResult()));
     }
 
     @Override

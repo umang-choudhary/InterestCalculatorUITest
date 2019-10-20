@@ -1,6 +1,11 @@
 package com.learntodroid.interestcalculator.views;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.learntodroid.interestcalculator.R;
 import com.learntodroid.interestcalculator.adapters.ResultsAdapter;
 import com.learntodroid.interestcalculator.model.FinancialResult;
@@ -30,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = findViewById(R.id.activity_main_recycler_view);
+        setupCalculator();
 
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
@@ -47,8 +52,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
+        recyclerView = findViewById(R.id.activity_main_recycler_view);
         recyclerViewAdapter = new ResultsAdapter(this, viewModel.getResults().getValue());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recyclerViewAdapter);
+    }
+
+    private void setupCalculator() {
+        final EditText initialDepositEditText = ((TextInputLayout) findViewById(R.id.activity_main_initial_deposit)).getEditText();
+        final EditText monthlyDepositEditText = ((TextInputLayout) findViewById(R.id.activity_main_monthly_deposit)).getEditText();
+        final EditText interestRateEditText = ((TextInputLayout) findViewById(R.id.activity_main_interest_rate)).getEditText();
+        final EditText termEditText = ((TextInputLayout) findViewById(R.id.activity_main_term)).getEditText();
+
+        initialDepositEditText.setText("20000");
+        monthlyDepositEditText.setText("250");
+        interestRateEditText.setText("2");
+        termEditText.setText("5");
+
+        findViewById(R.id.activity_main_calculate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int initialDeposit = Integer.parseInt(initialDepositEditText.getText().toString());
+                int monthlyDeposit = Integer.parseInt(monthlyDepositEditText.getText().toString());
+                int rate = Integer.parseInt(interestRateEditText.getText().toString());
+                int term = Integer.parseInt(termEditText.getText().toString());
+                viewModel.calculateResults(initialDeposit, monthlyDeposit, rate, term);
+            }
+        });
     }
 }
