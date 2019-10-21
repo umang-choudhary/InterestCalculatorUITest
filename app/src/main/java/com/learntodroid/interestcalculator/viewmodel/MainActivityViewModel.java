@@ -2,6 +2,7 @@ package com.learntodroid.interestcalculator.viewmodel;
 
 import com.learntodroid.interestcalculator.model.FinancialResult;
 import com.learntodroid.interestcalculator.repositories.FinancialResultRepository;
+import com.learntodroid.interestcalculator.util.CalculatorUtil;
 
 import java.util.List;
 
@@ -20,35 +21,11 @@ public class MainActivityViewModel extends ViewModel {
         results = repo.getResults();
     }
 
-    public int calculateTotalDeposits(int initialDeposit, int monthlyDeposit, int term) {
-        int totalDeposits = initialDeposit + (term * 12 * monthlyDeposit);
-        return totalDeposits;
-    }
-
-    public double calculateTotalInterestPaid(int i, int m, double rate, int term) {
-//        int savings = initialDeposit + monthlyDeposit;
-//        double interestPaid = 0;
-//        for (int year = 0; year < term; year++) {
-//            for (int month = 0; month < 12; month++) {
-//                savings += monthlyDeposit;
-//                interestPaid += (savings * ((rate/100)/12));
-//            }
-//        }
-//        return interestPaid;
-        // https://www.thebalance.com/calculate-interest-on-savings-315753
-        double r = (rate/100)/12;
-        int n = 12 * term;
-        // FV = Pmt x (((1 + r) ^ n) – 1)/r)
-        double totalPaid = (i + m) * ((Math.pow(1 + r, n) - 1) / r);
-        double interestPaid = totalPaid - calculateTotalDeposits(i, m, term);
-        return interestPaid;
-
-    }
-
-    public void calculateResults(int initialDeposit, int monthlyDeposit, double rate, int term) {
-        int totalDeposits = calculateTotalDeposits(initialDeposit, monthlyDeposit, term);
-        double totalInterest = calculateTotalInterestPaid(initialDeposit, monthlyDeposit, rate, term);
-        double totalSavings = totalDeposits + totalInterest;
+    public void calculateResults(double initialDeposit, double monthlyDeposit, double rate, int term) {
+        CalculatorUtil calc = new CalculatorUtil();
+        double totalDeposits = calc.calculateTotalDeposits(initialDeposit, monthlyDeposit, term);
+        double totalInterest = calc.calculateTotalInterestPaid(initialDeposit, monthlyDeposit, rate, term);
+        double totalSavings = calc.calculateTotalSavings(totalDeposits, totalInterest);
 
         List<FinancialResult> currentResults = results.getValue();
         currentResults.add(0, new FinancialResult("Total Savings", totalSavings));
