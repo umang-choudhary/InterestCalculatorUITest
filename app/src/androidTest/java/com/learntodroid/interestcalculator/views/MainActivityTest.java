@@ -2,7 +2,6 @@ package com.learntodroid.interestcalculator.views;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.learntodroid.interestcalculator.R;
