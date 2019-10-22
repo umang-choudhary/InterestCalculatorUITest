@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.learntodroid.interestcalculator.R;
 import com.learntodroid.interestcalculator.adapters.ResultsAdapter;
 import com.learntodroid.interestcalculator.model.FinancialResult;
 import com.learntodroid.interestcalculator.viewmodel.MainActivityViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
