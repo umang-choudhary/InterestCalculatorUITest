@@ -35,7 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Initial Deposit"
-                android:inputType="number" />
+                android:inputType="number"
+                android:id="@+id/activity_main_initial_deposit_edit_text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +49,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Monthly Deposit"
-                android:inputType="number" />
+                android:inputType="number"
+                android:id="@+id/activity_main_monthly_deposit_edit_text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Interest Rate"
-                android:inputType="number" />
+                android:inputType="number"
+                android:id="@+id/activity_main_interest_rate_edit_text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +77,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Term"
-                android:inputType="number" />
+                android:inputType="number"
+                android:id="@+id/activity_main_term_edit_text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
