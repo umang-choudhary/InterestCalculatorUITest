@@ -9,6 +9,7 @@ import com.learntodroid.interestcalculator.R;
 import com.learntodroid.interestcalculator.model.FinancialResult;
 import com.learntodroid.interestcalculator.views.ResultsViewHolder;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,9 @@ public class ResultsAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         ((ResultsViewHolder) viewHolder).description.setText(results.get(i).getDescription());
-        ((ResultsViewHolder) viewHolder).result.setText(String.valueOf(results.get(i).getResult()));
+
+        NumberFormat format = NumberFormat.getCurrencyInstance();
+        ((ResultsViewHolder) viewHolder).result.setText(format.format(results.get(i).getResult()));
     }
 
     @Override
