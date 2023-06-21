@@ -4,17 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.learntodroid.interestcalculator.R;
-import com.learntodroid.interestcalculator.model.FinancialResult;
-import com.learntodroid.interestcalculator.views.ResultsViewHolder;
-
-import java.text.NumberFormat;
-import java.util.List;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+
+import com.learntodroid.interestcalculator.R;
+import com.learntodroid.interestcalculator.model.FinancialResult;
+
+import java.text.NumberFormat;
+import java.util.List;
 
 public class ResultsAdapter extends RecyclerView.Adapter<ViewHolder> {
     private Context context;
@@ -44,5 +44,16 @@ public class ResultsAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public int getItemCount() {
         return results.size();
+    }
+
+    static class ResultsViewHolder extends RecyclerView.ViewHolder {
+        public TextView description, result;
+
+        public ResultsViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            description = itemView.findViewById(R.id.recyclerview_item_description);
+            result = itemView.findViewById(R.id.recyclerview_item_result);
+        }
     }
 }
